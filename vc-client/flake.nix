@@ -9,28 +9,22 @@
     flake-utils,
   }:
     flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {allowUnfree = true;};
+      };
       fhs = pkgs.buildFHSUserEnv {
         name = "fhs-shell";
         targetPkgs = pkgs:
           with pkgs;
-          with pkgs.python39Packages; [
-            zsh
-            python39
+          with pkgs.python310Packages; [
+            python310
             pip
-            cudatookit_11
+            cudatoolkit_11
             portaudio
+            gcc
           ];
-        extraBuildCommands = ''
-          python -m venv .venv
-          source .venv/bin/activate
-          # pip install ./requirements.txt
-        '';
-        runScript = ''
-          zsh
-          source .venv/bin/activate
-          which pip
-        '';
+        runScript = "zsh";
       };
     in {
       devShells.default = fhs.env;
