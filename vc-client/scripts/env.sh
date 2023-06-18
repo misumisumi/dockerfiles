@@ -1,7 +1,4 @@
 #! /usr/bin/env bash
-nix develop
-[[ ! -d .venv ]] && python3 -m venv .venv]]
-source .venv/bin/activate
 cd ../../voice-changer/server || exit
 
 python3 MMVCServerSIO.py \
