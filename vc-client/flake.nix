@@ -11,7 +11,10 @@
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = import nixpkgs {
         inherit system;
-        config = {allowUnfree = true;};
+        config = {
+          allowUnfree = true;
+          pulseaudio = true;
+        };
       };
       fhs = pkgs.buildFHSUserEnv {
         name = "fhs-shell";
@@ -19,10 +22,11 @@
           with pkgs;
           with pkgs.python310Packages; [
             python310
+            gcc
+            cmake
             pip
             cudatoolkit_11
             portaudio
-            gcc
           ];
         runScript = "zsh";
       };
