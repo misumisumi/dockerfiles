@@ -7,8 +7,7 @@ podman run --runtime nvidia -it \
   -v "$(pwd)/Retrieval-based-Voice-Conversion-WebUI":/app/rvc \
   -v "$(pwd)/pretrained/rvc":/app/weights \
   -v "$(pwd)/../outputs/rvc":/app/outputs \
-  -v "$(pwd)/../datasets":/app/original \
-  -v "$(pwd)/../tmp:/app/datasets" \
+  -v "$(pwd)/../datasets/48k":/app/datasets/48k \
   -v "$(pwd)/dockerfiles/rvc/scripts":/app/scripts \
   -w /app/rvc \
   --shm-size=4g \

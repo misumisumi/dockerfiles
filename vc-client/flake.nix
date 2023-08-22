@@ -20,8 +20,8 @@
         name = "fhs-shell";
         targetPkgs = pkgs:
           with pkgs;
-          with pkgs.python310Packages; [
-            python310
+          with pkgs.python311Packages; [
+            python311
             gcc
             cmake
             pip
