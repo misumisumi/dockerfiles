@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 [[ ! -d ../outputs/rvc ]] && mkdir -p ../outputs/rvc
-
+pushd ../../
 podman run --runtime nvidia -it \
   -p 7865:7865 \
   -v /run/user/1000/pulse/pulpul:/tmp/pulse/native \
@@ -15,3 +15,4 @@ podman run --runtime nvidia -it \
   --name rvc \
   rvc/pytorch:2.0.1 \
   python infer-web.py
+popd

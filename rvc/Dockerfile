@@ -15,7 +15,7 @@ RUN apt update && \
         portaudio19-dev \
         pulseaudio \
         alsa-utils \
-        ffmpeg \
+        ffmpeg && \
     apt clean && \
     locale-gen ja_JP.UTF-8 && \
     pip install -r requirements.txt
