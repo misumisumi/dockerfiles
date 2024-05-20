@@ -8,7 +8,6 @@ podman run --runtime nvidia -it \
   -v "$(pwd)/pretrained/rvc":/app/weights \
   -v "$(pwd)/../outputs/rvc":/app/outputs \
   -v "$(pwd)/../datasets":/app/original \
-  -v "$(pwd)/../tmp:/app/datasets" \
   -v "$(pwd)/dockerfiles/rvc/scripts":/app/scripts \
   -w /app/rvc \
   --shm-size=4g \

@@ -5,12 +5,15 @@ ENV PULSE_SERVER unix:/tmp/pulse/native
 
 WORKDIR /app
 
+RUN mkdir -p /app/datasets
+
 COPY ./requirements.txt ./
 
 RUN apt update && \
     DEBIAN_FRONTEND=noninteractive \
     apt install -y \
         git \
+        sox \
         locales \
         portaudio19-dev \
         pulseaudio \
